@@ -1,6 +1,6 @@
 {
     'name': 'Library',
-    'version': '14.0.0.0',
+    'version': "17.0.1.0.0",
     'application': True,
     'auto_install': False,
     'installable': True,
