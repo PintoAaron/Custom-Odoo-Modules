@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <record id="view_library_book_tree" model="ir.ui.view">
+        <field name="name">library.book.tree</field>
+        <field name="model">library.book</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="title"/>
+                <field name="author_id"/>
+                <field name="publication_date"/>
+                <field name="isbn"/>
+                <field name="description"/>
+                <field name="book_file" widget='binary'/>
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="view_library_book_form" model="ir.ui.view">
+        <field name="name">library.book.form</field>
+        <field name="model">library.book</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="title"/>
+                        </group>
+                        <group>
+                            <field name="author_id" options="{'no_create':True}"/>
+                        </group>
+                        <group>
+                            <field name="publication_date"/>
+                        </group>
+                        <group>
+                            <field name="isbn"/>
+                        </group>
+                        <group>
+                            <field name="description"/>
+                        </group>
+                        <group>
+                            <field name="book_file" widget='binary'/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="library_book_action" model="ir.actions.act_window">
+        <field name="name">Books</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">library.book</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Click to add a new book!
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="menu_library_root"
+              name="Library"
+              sequence="10"
+              web_icon="/library/static/description/icon.png"/>
+
+    <menuitem id="menu_library_books_root"
+              name="Books"
+              parent="menu_library_root"
+              action="library_book_action"
+              sequence="10"/>
+
+    <!-- <menuitem id="menu_library_books"
+              name="Books"
+              parent="menu_library_books_root"
+              action="library_book_action"
+              sequence="10"/> -->
+
+
+</odoo>
