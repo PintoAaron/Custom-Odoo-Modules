@@ -25,7 +25,7 @@
                 <sheet>
                     <group>
                         <group>
-                            <field name="title"/>
+                            <field name="title" widget="digital_address"/>
                         </group>
                         <group>
                             <field name="author_id" options="{'no_create':True}"/>
