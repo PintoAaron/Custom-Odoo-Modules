@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <record id="view_lettermanagement_letter_tree" model="ir.ui.view">
+        <field name="name">lettermanagement.letter.tree</field>
+        <field name="model">lettermanagement.letter</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="owner"/>
+                <field name="letter"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="view_lettermanagement_letter_form" model="ir.ui.view">
+        <field name="name">lettermanagement.letter.book.form</field>
+        <field name="model">lettermanagement.letter</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="owner"/>
+                        </group>
+                        <group>
+                            <field name="letter" />
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="lettermanagement_letter_action" model="ir.actions.act_window">
+        <field name="name">letter</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">lettermanagement.letter</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new letter!
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="menu_lettermanagement_root"
+              name="Letter Management"
+              sequence="10"/>
+
+    <menuitem id="menu_lettermanagement_letter_root"
+              name="Letters"
+              parent="menu_lettermanagement_root"
+              action="lettermanagement_letter_action"
+              sequence="10"/>
+
+    <!-- <menuitem id="menu_library_books"
+              name="Books"
+              parent="menu_library_books_root"
+              action="library_book_action"
+              sequence="10"/> -->
+
+
+</odoo>
