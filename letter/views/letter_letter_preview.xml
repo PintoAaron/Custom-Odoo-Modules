@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_letter_preview_form" model="ir.ui.view">
+        <field name="name">letter.letter.preview.form</field>
+        <field name="model">letter.letter.preview</field>
+        <field name="arch" type="xml">
+            <form string="Letter Preview">
+                <field name="letter_id" invisible="1"/>
+                <field name="is_closed" invisible="1"/>
+                <field 
+                            name="content" 
+                            readonly="1" 
+                            widget="html"/>
+                <footer>
+                    <button 
+                        name="action_download_letter"
+                        type="object"
+                        string="Download"
+                        class="oe_highlight"
+                        invisible="not is_closed"/>
+                    <button string="Close" class="btn-secondary" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record id="action_letter_preview" model="ir.actions.act_window">
+        <field name="name">Letter Preview</field>
+        <field name="res_model">letter.letter.preview</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

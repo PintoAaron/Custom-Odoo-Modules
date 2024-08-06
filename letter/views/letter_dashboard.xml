@@ -15,7 +15,7 @@
         id="new_letter_menu"
         action="letter_dashboard_window"
         name="New Letter"
-        parent="approvals_menu"
+        parent="letters_menu"
         sequence="1"
     />
 
@@ -63,7 +63,7 @@
         action="letter_window"
         id="letter_menu"
         name="Letters"
-        parent="approvals_menu"
+        parent="letters_menu"
         sequence="10"
     />
 

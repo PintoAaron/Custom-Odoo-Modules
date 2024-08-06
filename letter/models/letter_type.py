@@ -1,8 +1,15 @@
 import ast
 import base64
 
-from odoo import api, fields, models, tools
+from odoo import _, api, fields, models, tools
+from odoo.fields import Command
 
+DEFAULT_STAGES = {
+    1: {"name": _("Draft"), "is_closing": False},
+    2: {"name": _("Review"), "is_closing": False},
+    3: {"name": _("Approve and Sign"), "is_closing": False},
+    4: {"name": _("Complete"), "is_closing": True},
+}
 
 class LetterType(models.Model):
     _name = "letter.type"
@@ -28,10 +35,19 @@ class LetterType(models.Model):
     active = fields.Boolean(default=True)
     sequence = fields.Integer()
     image = fields.Binary(default=_get_default_image)
-
-    # TODO: later; maybe a type could have alternative templates
-    # mail_template_ids = fields.Many2one(
-    #     domain=[("model", "=", "letter.letter")])
+    mail_template_id = fields.Many2one(
+        comodel_name="mail.template",
+        domain=[("model", "=", "letter.letter")],
+        string="Default Template",
+    )
+    mail_template_ids = fields.Many2many(
+        comodel_name="mail.template",
+        domain=[("model", "=", "letter.letter")],
+        relation="letter_type_mail_template_rel",
+        column1="letter_type_id",
+        column2="mail_template_id",
+        string="Templates",
+    )
 
     stage_ids = fields.One2many(
         comodel_name="letter.type.stage",
@@ -49,6 +65,18 @@ class LetterType(models.Model):
         string="Number of letters to review",
         compute="_compute_letter_to_review_count",
     )
+
+    @api.model_create_multi
+    def create(self, vals_list):
+        for vals in vals_list:
+            if not vals.get("stage_ids"):
+                vals["stage_ids"] = [
+                    Command.create({"name": stage['name'],
+                                    "sequence": sequence,
+                                    "is_closing": stage['is_closing']})
+                    for sequence, stage in DEFAULT_STAGES.items()
+                ]
+        return super().create(vals_list)
 
     @api.depends("stage_ids")
     def _compute_show_configure_pipeline(self):

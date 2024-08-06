@@ -1,119 +1,47 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-    <record id="business_letter" model="letter.type">
-        <field name="name">Business Letter</field>
-        <field name="image" type="base64" file="letter/static/src/img/Envelope.png" />
-        <field name="sequence">1</field>
-        <!-- <field name="require_document">optional</field>
-        <field name="show_date">no</field>
-        <field name="show_period">required</field>
-        <field name="show_product">no</field>
-        <field name="show_quantity">no</field>
-        <field name="show_amount">no</field>
-        <field name="show_partner">no</field>
-        <field name="show_payment_method">no</field>
-        <field name="show_location">required</field> -->
-        <!--            <field name="approval_minimum">1</field>-->
-        <!--            <field name="manager_approval">approver</field>-->
-    </record>
+<record id="business_letter" model="letter.type">
+    <field name="name">Business Letter</field>
+    <field name="image" type="base64" file="letter/static/src/img/Envelope.png" />
+    <field name="sequence">1</field>
+    <field name="description">create business letters</field>
+</record>
 
-    <record id="employment_letter" model="letter.type">
-        <field name="name">Employment Letter</field>
-        <field name="image" type="base64" file="letter/static/src/img/Envelope.png" />
-        <field name="sequence">10</field>
-        <!-- <field name="require_document">optional</field>
-        <field name="show_date">no</field>
-        <field name="show_period">required</field>
-        <field name="show_product">required</field>
-        <field name="show_quantity">optional</field>
-        <field name="show_amount">no</field>
-        <field name="show_partner">no</field>
-        <field name="show_payment_method">no</field>
-        <field name="show_location">no</field> -->
-        <!--            <field name="approval_minimum">1</field>-->
-    </record>
+<record id="employment_letter" model="letter.type">
+    <field name="name">Employment Letter</field>
+    <field name="image" type="base64" file="letter/static/src/img/Envelope.png" />
+    <field name="sequence">2</field>
+    <field name="description">create employment letters</field>
 
-    <record id="termination_letter" model="letter.type">
-        <field name="name">Termination Letter</field>
-        <field name="image" type="base64" file="letter/static/src/img/Envelope.png" />
-        <field name="sequence">20</field>
-        <!-- <field name="require_document">required</field>
-        <field name="show_date">optional</field>
-        <field name="show_period">optional</field>
-        <field name="show_product">optional</field>
-        <field name="show_quantity">optional</field>
-        <field name="show_amount">optional</field>
-        <field name="show_partner">optional</field>
-        <field name="show_payment_method">optional</field>
-        <field name="show_location">optional</field> -->
-<!--        <field name="approval_minimum">1</field>-->
-<!--        <field name="manager_approval">approver</field>-->
-    </record>
-    <record id="contract_letter" model="letter.type">
-        <field name="name">Contract Letter</field>
-        <field name="image" type="base64" file="letter/static/src/img/Envelope.png" />
-        <field name="sequence">30</field>
-        <!-- <field name="require_document">optional</field>
-        <field name="show_date">no</field>
-        <field name="show_period">no</field>
-        <field name="show_product">no</field>
-        <field name="show_quantity">no</field>
-        <field name="show_amount">optional</field>
-        <field name="show_partner">required</field>
-        <field name="show_payment_method">no</field>
-        <field name="show_location">no</field> -->
-<!--        <field name="approval_minimum">1</field>-->
-    </record>
+</record>
 
-    <record id="commendation_letter" model="letter.type">
-        <field name="name">Commendation Letter</field>
-        <field
-            name="image"
-            type="base64"
-            file="letter/static/src/img/Envelope.png"
-        />
-        <field name="sequence">40</field>
-        <!-- <field name="require_document">optional</field>
-        <field name="show_date">required</field>
-        <field name="show_period">no</field>
-        <field name="show_product">no</field>
-        <field name="show_quantity">no</field>
-        <field name="show_amount">required</field>
-        <field name="show_partner">required</field>
-        <field name="show_payment_method">required</field>
-        <field name="show_location">no</field> -->
-<!--        <field name="approval_minimum">1</field>-->
-    </record>
+<record id="recruitment_letter" model="letter.type">
+    <field name="name">Recruitment Letter</field>
+    <field name="image" type="base64" file="letter/static/src/img/Envelope.png" />
+    <field name="sequence">3</field>
+    <field name="description">create recruitment letters</field>
 
-    <record id="complaint_letter" model="letter.type">
-        <field name="name">Complaint Letter</field>
-        <field name="image" type="base64" file="letter/static/src/img/Envelope.png" />
-        <field name="sequence">50</field>
-        <!-- <field name="require_document">optional</field>
-        <field name="show_date">no</field>
-        <field name="show_period">required</field>
-        <field name="show_product">no</field>
-        <field name="show_quantity">no</field>
-        <field name="show_amount">no</field>
-        <field name="show_partner">no</field>
-        <field name="show_payment_method">no</field>
-        <field name="show_location">no</field> -->
-<!--        <field name="approval_minimum">1</field>-->
-    </record>
+</record>
 
-    <record id="request_letter" model="letter.type">
-        <field name="name">Request Letter</field>
-        <field name="image" type="base64" file="letter/static/src/img/Envelope.png" />
-        <field name="sequence">70</field>
-        <!-- <field name="require_document">optional</field>
-        <field name="show_date">no</field>
-        <field name="show_period">no</field>
-        <field name="show_product">no</field>
-        <field name="show_quantity">required</field>
-        <field name="show_amount">optional</field>
-        <field name="show_partner">no</field>
-        <field name="show_payment_method">no</field>
-        <field name="show_location">no</field> -->
-<!--        <field name="approval_minimum">1</field>-->
-    </record>
+<record id="termination_letter" model="letter.type">
+    <field name="name">Termination Letter</field>
+    <field name="image" type="base64" file="letter/static/src/img/Envelope.png" />
+    <field name="sequence">4</field>
+    <field name="description">create termination letters</field>
+
+</record>
+
+<record id="request_letter" model="letter.type">
+    <field name="name">Request Letter</field>
+    <field name="image" type="base64" file="letter/static/src/img/Envelope.png" />
+    <field name="sequence">5</field>
+    <field name="description">create request letters</field>
+</record>
+
+<record id="offer_letter" model="letter.type">
+    <field name="name">Offer Letter</field>
+    <field name="image" type="base64" file="letter/static/src/img/Envelope.png" />
+    <field name="sequence">6</field>
+    <field name="description">create offer letters</field>
+</record>
 </odoo>

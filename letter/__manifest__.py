@@ -1,16 +1,16 @@
 {
     "name": "Letters",
-    "summary": "Manage letters.",
+    "summary": "Manage letters",
     "author": "QG Apps",
-    "sequence": -150,
     "website": "https://github.com/TheQuantumGroup/odoo-letter",
-    "version": "17.0.1.0.0",
+    "version": "17.0.1.0.1",
     "license": "Other proprietary",
     "category": "Uncategorized",
     "depends": [
         "base",
         "mail",
         "pipeline",
+        "email_template_qweb",
     ],
     "data": [
         "security/ir.model.access.csv",
@@ -21,6 +21,7 @@
         "views/letter_type.xml",
         "views/letter_letter.xml",
         "views/letter_dashboard.xml",
+        "views/letter_letter_preview.xml",
     ],
     "application": True,
 }

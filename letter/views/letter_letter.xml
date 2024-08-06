@@ -93,7 +93,7 @@
                 <field name="sequence" widget="handle" />
                 <field name="name" optional="show" />
                 <field name="summary" optional="show" />
-                <field name="user_id" widget="many2one_avatar_user" optional="show" />
+                <field name="user_id" widget="many2one_avatar_user" optional="show"/>
                 <field name="letter_type_id" />
                 <field name="activity_ids" widget="list_activity" optional="show" />
                 <field
@@ -103,6 +103,7 @@
                 />
                 <field name="stage_id" options="{'no_open': True}" />
                 <field name="active" column_invisible="1" />
+                <field name="is_closed" column_invisible="1" />
             </tree>
         </field>
     </record>
@@ -113,6 +114,7 @@
         <field name="arch" type="xml">
             <form>
                 <field name="active" invisible="1" />
+                <field name="is_closed" invisible="1" />
                 <header>
                     <widget
                         name="attach_document"
@@ -131,8 +133,19 @@
                         name="stage_id"
                         widget="statusbar_duration"
                         invisible="not letter_type_id"
-                        options="{'clickable': '1', 'fold_field': 'fold'}"
-                    />
+                        options="{'clickable': '1', 'fold_field': 'fold'}"/>
+                    <button 
+                        name="action_preview_letter" 
+                        type="object" 
+                        string="Preview" 
+                        class="oe_highlight"
+                        invisible="not id"/>
+                    <button
+                        name="action_download_letter"
+                        type="object"
+                        string="Download"
+                        class="oe_highlight"
+                        invisible="not is_closed"/>
                 </header>
                 <sheet>
                     <div class="oe_button_box" name="button_box">
@@ -177,22 +190,36 @@
                         <group name="main">
                             <field
                                 name="user_id"
+                                options="{'no_create': True, 'no_open': True}"
                                 domain="[('share', '=', False)]"
                                 widget="many2one_avatar_user"
+                                readonly="1"
                             />
                             <field name="letter_type_id" invisible="1" />
-                            <field
-                                name="date"
+                            <field 
+                                name="date" 
+                                readonly="id"/>
+                            <field 
+                                name="partner_ids" 
+                                options="{'no_create': True}"
+                                readonly="id" 
+                                widget="many2many_tags_avatar" />
+                            <field 
+                                name="letter_type_template_ids"
+                                invisible="1" />
+                            <field 
+                                name="mail_template_id"
+                                options="{'no_create': True, 'no_open': True}"
+                                readonly="id"
                             />
-                            <field
-                                name="partner_ids" widget="many2many_tags_avatar"
-                            />
-                            <field name="company_id" invisible="1" />
+                            <field 
+                                name="company_id" 
+                                invisible="1" />                
                         </group>
                     </group>
                     <notebook>
                         <page name="content" string="Content">
-                            <field name="content" />
+                            <field name="content" readonly="is_closed"/>
                         </page>
                     </notebook>
                 </sheet>

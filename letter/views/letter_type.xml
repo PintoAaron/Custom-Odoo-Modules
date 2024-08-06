@@ -27,11 +27,8 @@
                             icon="fa-arrows-h"
                         />
                     </div>
-                    
-                    <field 
-                    name="active" 
-                    invisible="1"
-                    />
+
+                    <field name="active" invisible="1" />
                     <widget
                         bg_color="bg-danger"
                         invisible="active == True"
@@ -51,14 +48,19 @@
                         </h1>
                     </div>
                     <group name="main">
-                        <group name="left">
-                            <field name="description" />
-                            <field
-                                groups="base.group_multi_company"
-                                name="company_id"
-                                options="{'no_create': True}"
-                            />
-                        </group>
+                        <field name="description" />
+                        <field
+                            groups="base.group_multi_company"
+                            name="company_id"
+                            options="{'no_create': True}"
+                            invisible="1"
+                        />
+                        <field name="mail_template_id" options="{'no_create': True}" />
+                        <field
+                            name="mail_template_ids"
+                            widget="many2many_tags"
+                            options="{'no_create': True}"
+                        />
                     </group>
                 </sheet>
             </form>
