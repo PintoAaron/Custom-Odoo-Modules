@@ -1,0 +1,3 @@
+from . import apartmentplug_apartment
+from . import apartmentplug_property_type
+from . import apartmentplug_apartment_tag
