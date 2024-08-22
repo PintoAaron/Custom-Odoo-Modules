@@ -12,6 +12,7 @@
         "views/apartmentplug_property_type.xml",
         "views/apartmentplug_apartment.xml",
         "views/apartmentplug_apartment_tag.xml",
+        "views/apartmentplug_offer.xml",
         ],
     "application": True,
 }

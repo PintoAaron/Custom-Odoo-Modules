@@ -56,6 +56,9 @@
                             <field name="expected_price"/>
                         </group>
                         <group>
+                            <field name="best_offer" invisible="not offer_ids"/>
+                        </group>
+                        <group>
                             <field name="state" invisible="not id"/>
                         </group>
                     </group>
@@ -68,7 +71,7 @@
                                         <field name="bedrooms"/>
                                     </group>
                                     <group>
-                                        <field name="living_rooms"/>
+                                        <field name="living_area"/>
                                     </group>
                                     <group>
                                         <field name="facades"/>
@@ -85,6 +88,9 @@
                                     <group>
                                         <field name="garden_orientation"/>
                                     </group>
+                                    <group>
+                                        <field name="total_area"/>
+                                    </group>
                             </page>
                             <page string="Other Info">
                                 <group>
@@ -100,6 +106,9 @@
                                         options="{'no_create': True, 'no_open': True}"
                                     />
                                 </group>
+                            </page>
+                            <page string="Offers">
+                                    <field name="offer_ids" widget="one2many_list"/>
                             </page>
                         </notebook>
                 </sheet>
